@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, observable, of } from 'rxjs';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user',
@@ -11,8 +12,9 @@ export class UserComponent implements OnInit {
   contacts$ :any;
   users: any;
   userStatus: any;
+  listUsers: any;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.users = ['rk','mk','pk'];
@@ -39,6 +41,14 @@ export class UserComponent implements OnInit {
   complete: () => console.info('complete') 
 })
     
+
+//third method
+this.userService.getUser().subscribe({
+  next: (v) => this.listUsers = v,
+  error: (e) => console.error(e),
+  complete: () => console.info('complete') 
+})
+
 
   }
 

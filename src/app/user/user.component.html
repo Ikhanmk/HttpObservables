@@ -1,2 +1,4 @@
 <p>user works!</p>
-<h1>{{userStatus}}</h1>
+<ul *ngFor = 'let user of listUsers'>
+    <li>{{user.name}}</li>
+</ul>
